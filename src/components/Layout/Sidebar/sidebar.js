@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import {MdHome} from 'react-icons/md'
+import {RiArchiveLine, RiHome2Line, RiLogoutBoxLine} from 'react-icons/ri'
+import {MdOutlinePeopleAlt} from 'react-icons/md'
 import {FaUsers} from 'react-icons/fa'
 
 function sidebar() {
@@ -19,7 +20,7 @@ function sidebar() {
             }
             to="/"
           >
-            <MdHome className="text-[1.7rem] mr-2 text-slate-600" /> Home
+            <RiHome2Line className="text-[1.7rem] mr-2 text-slate-600" /> Home
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -29,6 +30,7 @@ function sidebar() {
             }
             to="/products"
           >
+            <RiArchiveLine className="text-[1.7rem] mr-2 text-slate-600" />{" "}
             Products
           </NavLink>
           <NavLink
@@ -49,17 +51,17 @@ function sidebar() {
             }
             to="/members"
           >
-            <FaUsers className="text-[1.7rem] mr-2 text-slate-600" /> Members
+            <MdOutlinePeopleAlt className="text-[1.7rem] mr-2 text-slate-600" /> Members
           </NavLink>
         </div>
 
         <div className="absolute bottom-2 flex items-center text-lg left-5 ">
           <hr />
           <button
-            className="p-2 w-32 mt-2 rounded-sm bg-[#6161F5] text-white "
+            className="flex items-center p-2 w-32 mt-2 rounded-sm bg-[#6161F5] text-white "
             onClick={handleLogout}
           >
-            Logout
+            <RiLogoutBoxLine /> Logout
           </button>
         </div>
       </div>
