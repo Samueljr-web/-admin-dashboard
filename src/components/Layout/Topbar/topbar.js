@@ -2,7 +2,6 @@ import React from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { Avatar } from "../../../assets";
 function topbar({ greeting, adminDetails }) {
-    console.log(adminDetails);
     return (
         <div className="flex items-center justify-between h-16 w-full shadow px-10">
             <h2 className="text-lg font-medium">{greeting}</h2>

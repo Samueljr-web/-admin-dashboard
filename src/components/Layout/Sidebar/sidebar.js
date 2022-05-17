@@ -6,7 +6,8 @@ import { FaUsers } from "react-icons/fa";
 
 function sidebar() {
     const handleLogout = () => {
-        window.location = "/signup";
+        window.location = "/signin";
+        sessionStorage.clear();
     };
     return (
         <div className="col-span-1">
