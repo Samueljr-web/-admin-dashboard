@@ -4,6 +4,15 @@ import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [activeProducts, setActiveProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const changePage = (id) => {
+        setCurrentPage(id);
+        const from = (id - 1) * 5;
+        const to = id * 5;
+
+        setActiveProducts(products.slice(from, to));
+    };
     useEffect(() => {
         const getProducts = async () => {
             const response = await fetch(
@@ -12,6 +21,7 @@ const Products = () => {
             const { data } = await response.json();
             setProducts(data);
             setActiveProducts(data.slice(0, 5));
+            setCurrentPage(1);
         };
         getProducts();
     }, []);
@@ -65,21 +75,51 @@ const Products = () => {
                     })}
                 </tbody>
             </table>
-            <div className="mt-6 flex justify-end w-full pr-4">
-                <button className="text-gray-600 flex items-center text-lg ">
-                    <MdOutlineNavigateBefore className="text-gray-600 text-3xl mr-2 " />
-                    Previous
-                </button>
-                <button className="px-6 py-2">1</button>
-                <button className="px-6 py-2">2</button>
-                <button className="px-6 py-2">3</button>
-                <button className="px-6 py-2">4</button>
-                <button className="px-6 py-2">5</button>
-                <button className="px-6 py-2">6</button>
-                <button className="bg-[#6161F5] px-6 py-2 mx-2 rounded-md flex items-center">
-                    Next <MdOutlineNavigateNext className="ml-2 text-2xl" />
-                </button>
-            </div>
+            {products.length > 0 && (
+                <div className="mt-6 flex justify-end w-full pr-4">
+                    <button
+                        className="text-gray-600 flex items-center text-lg mr-4"
+                        onClick={() => {
+                            if (currentPage > 1) {
+                                setCurrentPage(currentPage - 1);
+                                changePage(currentPage - 1);
+                            }
+                        }}
+                    >
+                        <MdOutlineNavigateBefore className="text-gray-600 text-3xl mr-2 " />
+                        Previous
+                    </button>
+                    {[1, 2, 3, 4, 5, 6].map((entry) => {
+                        return (
+                            <button
+                                className={`h-10 w-10 mx-2 transition duration-1000 rounded-full ${
+                                    currentPage === entry
+                                        ? "bg-[#6161F5]"
+                                        : "hover:bg-gray-300"
+                                }`}
+                                key={entry}
+                                onClick={() => {
+                                    changePage(entry);
+                                }}
+                            >
+                                {entry}
+                            </button>
+                        );
+                    })}
+
+                    <button
+                        className="bg-[#6161F5] px-6 py-2 mx-2 rounded-md flex items-center"
+                        onClick={() => {
+                            if (currentPage < 6) {
+                                setCurrentPage(currentPage + 1);
+                                changePage(currentPage + 1);
+                            }
+                        }}
+                    >
+                        Next <MdOutlineNavigateNext className="ml-2 text-2xl" />
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
