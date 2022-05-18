@@ -4,12 +4,17 @@ import { RiArchiveLine, RiHome2Line, RiLogoutBoxLine } from "react-icons/ri";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 
-function sidebar() {
+function sidebar({ sidebarOpen, setSidebarOpen }) {
     const handleLogout = () => {
-        window.location = "/signup";
+        sessionStorage.clear();
+        window.location = "/signin";
     };
     return (
-        <div className="col-span-1">
+        <div
+            className={`absolute top-0 ${
+                sidebarOpen ? "left-0" : "-left-full"
+            }  w-9/12 md:w-7/12 lg:static bg-white z-10 lg:w-auto lg:col-span-1 lg:block transition-all duration-700 ease-in-out sidebar-container`}
+        >
             <div className="flex flex-col w-full shadow-md h-screen">
                 <div className="flex flex-col p-5">
                     <NavLink
@@ -18,6 +23,7 @@ function sidebar() {
                                 ? "mt-8 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
                                 : "mt-8 p-2 flex items-center text-lg"
                         }
+                        onClick={() => setSidebarOpen(false)}
                         to="/"
                     >
                         <RiHome2Line className="text-[1.7rem] mr-2 text-slate-600" />{" "}
@@ -29,6 +35,7 @@ function sidebar() {
                                 ? "mt-8 p-2 flex items-center text-lg  rounded-md bg-[#6161F5] text-white"
                                 : "mt-8 p-2 flex items-center text-lg"
                         }
+                        onClick={() => setSidebarOpen(false)}
                         to="/products"
                     >
                         <RiArchiveLine className="text-[1.7rem] mr-2 text-slate-600" />{" "}
@@ -40,6 +47,7 @@ function sidebar() {
                                 ? "mt-8 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
                                 : "mt-8 p-2 flex items-center text-lg"
                         }
+                        onClick={() => setSidebarOpen(false)}
                         to="/clients"
                     >
                         <FaUsers className="text-[1.7rem] mr-2 text-slate-600" />{" "}
@@ -51,6 +59,7 @@ function sidebar() {
                                 ? "mt-8 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
                                 : "mt-8 p-2 flex items-center text-lg"
                         }
+                        onClick={() => setSidebarOpen(false)}
                         to="/members"
                     >
                         <MdOutlinePeopleAlt className="text-[1.7rem] mr-2 text-slate-600" />{" "}

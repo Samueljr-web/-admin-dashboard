@@ -5,6 +5,7 @@ import { Home, Members, Products, Clients } from "../components/Dashboard";
 
 function Dashboard() {
     const [greetings, setGreetings] = useState();
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     let today = new Date();
     let time = today.getHours();
 
@@ -17,14 +18,36 @@ function Dashboard() {
             setGreetings("Good Evening");
         }
     }, [time]);
+    useEffect(() => {
+        const handleWindowClick = (e) => {
+            const targ = e.target;
+            let closest = targ.closest(".sidebar-container");
+            if (!closest) {
+                if (!targ.classList.contains("hamburger-menu")) {
+                    setSidebarOpen(false);
+                }
+            }
+        };
+        window.addEventListener("click", handleWindowClick);
+        return () => {
+            return window.removeEventListener("click", handleWindowClick);
+        };
+    }, []);
 
     let adminDetails = JSON.parse(sessionStorage.getItem("adminDetails"));
     return (
         <div className="">
             <div className="grid grid-cols-4">
-                <Sidebar />
-                <div className="col-span-3 h-screen ">
-                    <Topbar greeting={greetings} adminDetails={adminDetails} />
+                <Sidebar
+                    sidebarOpen={sidebarOpen}
+                    setSidebarOpen={setSidebarOpen}
+                />
+                <div className="col-span-4 lg:col-span-3 h-screen ">
+                    <Topbar
+                        greeting={greetings}
+                        adminDetails={adminDetails}
+                        setSidebarOpen={setSidebarOpen}
+                    />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/members" element={<Members />} />
