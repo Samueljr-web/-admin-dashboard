@@ -33,7 +33,7 @@ function SignUp() {
                     if (findUser.password === form.password) {
                         sessionStorage.setItem(
                             "adminDetails",
-                            JSON.stringify({ ...form })
+                            JSON.stringify({ ...findUser })
                         );
                         toast.success("Login success");
                         setTimeout(() => {
