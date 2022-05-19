@@ -28,7 +28,7 @@ const Clients = () => {
     return (
         <div className="w-full overflow-hidden">
             <h1 className="text-md md:text-xl text-slate-800 font-bold p-8 pl-6">
-                Top Selling Products
+                Clients Information
             </h1>
             <table className="w-full">
                 <thead className="border ">
