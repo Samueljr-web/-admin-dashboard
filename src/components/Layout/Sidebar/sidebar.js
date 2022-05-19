@@ -13,15 +13,15 @@ function sidebar({ sidebarOpen, setSidebarOpen }) {
         <div
             className={`absolute top-0 ${
                 sidebarOpen ? "left-0" : "-left-full"
-            }  w-9/12 md:w-7/12 lg:static bg-white z-10 lg:w-auto lg:col-span-1 lg:block transition-all duration-700 ease-in-out sidebar-container`}
+            }  w-9/12 md:w-7/12 h-screen lg:static bg-white z-10 lg:w-auto lg:col-span-1 lg:block transition-all duration-700 ease-in-out sidebar-container`}
         >
-            <div className="flex flex-col w-full shadow-md h-screen">
+            <div className="flex flex-col fixed w-full shadow-md h-screen">
                 <div className="flex flex-col p-5">
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? "mt-8 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
-                                : "mt-8 p-2 flex items-center text-lg"
+                                ? "mt-8 w-52 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
+                                : "mt-8 w-52 p-2 flex items-center text-lg"
                         }
                         onClick={() => setSidebarOpen(false)}
                         to="/"
@@ -32,8 +32,8 @@ function sidebar({ sidebarOpen, setSidebarOpen }) {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? "mt-8 p-2 flex items-center text-lg  rounded-md bg-[#6161F5] text-white"
-                                : "mt-8 p-2 flex items-center text-lg"
+                                ? "mt-8 w-52 p-2 flex items-center text-lg  rounded-md bg-[#6161F5] text-white"
+                                : "mt-8 w-52 p-2 flex items-center text-lg"
                         }
                         onClick={() => setSidebarOpen(false)}
                         to="/products"
@@ -44,8 +44,8 @@ function sidebar({ sidebarOpen, setSidebarOpen }) {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? "mt-8 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
-                                : "mt-8 p-2 flex items-center text-lg"
+                                ? "mt-8 w-52 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
+                                : "mt-8 w-52 p-2 flex items-center text-lg"
                         }
                         onClick={() => setSidebarOpen(false)}
                         to="/clients"
@@ -56,8 +56,8 @@ function sidebar({ sidebarOpen, setSidebarOpen }) {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? "mt-8 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
-                                : "mt-8 p-2 flex items-center text-lg"
+                                ? "mt-8 w-52 p-2 flex items-center text-lg rounded-md bg-[#6161F5] text-white"
+                                : "mt-8 w-52 p-2 flex items-center text-lg"
                         }
                         onClick={() => setSidebarOpen(false)}
                         to="/members"
