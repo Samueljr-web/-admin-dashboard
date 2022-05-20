@@ -26,7 +26,7 @@ const Clients = () => {
         getClients();
     }, []);
     return (
-        <div className="w-full">
+        <div className="w-full overflow-scroll">
             <h1 className="text-md md:text-xl text-slate-800 font-bold p-8 pl-6">
                 Clients Information
             </h1>
@@ -40,7 +40,7 @@ const Clients = () => {
                             Full Name
                         </th>
                         
-                        <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
+                        <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700 sm:block">
                             Email
                         </th>
                         <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
@@ -67,7 +67,7 @@ const Clients = () => {
                                 <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md">
                                     {firstname}
                                 </td>
-                                <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md ">
+                                <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md sm:block">
                                     {email}
                                 </td>
                                 <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md">
@@ -93,7 +93,7 @@ const Clients = () => {
             {clients.length > 0 && (
                 <div className=" mt-8 mb-4 md:mt-6 flex justify-center sm:justify-end w-full pr-4 items-center">
                     <button
-                        className="text-gray-600 flex items-center text-md md:text-lg mr-4 hidden sm:flex"
+                        className="text-gray-600 flex items-center text-md md:text-lg mr-4 sm:flex"
                         onClick={() => {
                             if (currentPage > 1) {
                                 setCurrentPage(currentPage - 1);
@@ -123,7 +123,7 @@ const Clients = () => {
                     })}
 
                     <button
-                        className="bg-[#6161F5] text-md px-2 py-1 sm:px-4 sm:py-2 md:text-lg md:px-6 md:py-2 mx-2 rounded-md items-center hidden sm:flex"
+                        className="bg-[#6161F5] text-md px-4 py-1 sm:px-4 sm:py-2 md:text-lg md:px-6 md:py-2 mx-2 rounded-md items-center flex"
                         onClick={() => {
                             if (currentPage < 2) {
                                 setCurrentPage(currentPage + 1);
