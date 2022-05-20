@@ -26,11 +26,11 @@ const Clients = () => {
         getClients();
     }, []);
     return (
-        <div className="w-full overflow-hidden">
+        <div className="w-full">
             <h1 className="text-md md:text-xl text-slate-800 font-bold p-8 pl-6">
                 Clients Information
             </h1>
-            <table className="w-full">
+            <table className="w-full" style={{overflowX:"scroll"}}>
                 <thead className="border ">
                     <tr>
                     <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
@@ -39,13 +39,15 @@ const Clients = () => {
                         <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
                             Full Name
                         </th>
+                        
                         <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
                             Email
                         </th>
                         <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
                             Phone Number
                         </th>
-                        <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700 hidden sm:block">
+                        
+                        <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
                             Gender
                         </th>
                         <th className="p-2 py-4 sm:p-4 text-md text-left text-gray-700">
@@ -58,14 +60,14 @@ const Clients = () => {
                         const { id, firstname, email, phone, gender, image } =
                             client;
                         return (
-                            <tr key={id} className="border-b">
+                            <tr key={id} className="border-b" >
                                 <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md">
                                     {id}
                                 </td>
                                 <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md">
                                     {firstname}
                                 </td>
-                                <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md hidden sm:block">
+                                <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md ">
                                     {email}
                                 </td>
                                 <td className="p-2 py-3 sm:p-4 text-gray-800 text-sm md:text-md">
